@@ -10,22 +10,21 @@ class MiniBrowser extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Expanded(
       child: WebView(
+        javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (webViewController) =>
-          ref.read(webViewProvider.notifier).setWebView(webViewController),
+            ref.read(webViewProvider.notifier).setWebView(webViewController),
         initialUrl: ref.watch(webPageProvider),
         onWebResourceError: (error) =>
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-                content:
-                Text("Error with page ${error.failingUrl}",
-                    style: const TextStyle(color: Colors.white),),
-                backgroundColor: Colors.black,
-            )
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(
+            "Error with page ${error.failingUrl}",
+            style: const TextStyle(color: Colors.white),
           ),
+          backgroundColor: Colors.black,
+        )),
         onPageStarted: (url) =>
             ref.read(webPageProvider.notifier).setWebPage(url),
       ),
     );
   }
-
 }
