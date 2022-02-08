@@ -13,23 +13,22 @@ final webViewProvider =
 final textEditingControllerProvider =
     Provider<TextEditingController>((ref) => TextEditingController());
 
-final webPageProvider = StateNotifierProvider<WebPageNotifier, String>(
-        (ref) => WebPageNotifier());
+final webPageProvider =
+    StateNotifierProvider<WebPageNotifier, String>((ref) => WebPageNotifier());
 
 final favoriteProvider = StateNotifierProvider<FavoriteNotifier, List<String>>(
-        (ref) => FavoriteNotifier());
+    (ref) => FavoriteNotifier());
 
 final showHideFavoriteProvider =
     StateNotifierProvider<ShowFavoriteNotifier, bool>(
-         (ref) => ShowFavoriteNotifier());
+        (ref) => ShowFavoriteNotifier());
 
-final showedFavoriteProvider = Provider<bool>(
-        (ref) => ref.watch(showHideFavoriteProvider));
+final showedFavoriteProvider =
+    Provider<bool>((ref) => ref.watch(showHideFavoriteProvider));
 
-final addedWebPageToFavorite = Provider<bool>((ref)  {
-   final String currentWebPage = ref.watch(webPageProvider);
-   final List<String> favorites = ref.watch(favoriteProvider);
+final addedWebPageToFavorite = Provider<bool>((ref) {
+  final String currentWebPage = ref.watch(webPageProvider);
+  final List<String> favorites = ref.watch(favoriteProvider);
 
-   return favorites.contains(currentWebPage);
+  return favorites.contains(currentWebPage);
 });
-

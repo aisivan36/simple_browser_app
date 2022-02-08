@@ -10,23 +10,28 @@ class SearchBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Expanded(
-      child: TextField(
-        style: const TextStyle(color: Colors.black,),
+      child: TextFormField(
+        style: const TextStyle(
+          color: Colors.black,
+        ),
         controller: ref.read(textEditingControllerProvider),
         autocorrect: false,
         decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.search, color: Colors.red,),
+          prefixIcon: const Icon(
+            Icons.search,
+            color: Colors.red,
+          ),
+          contentPadding:
+              const EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
           hintText: AppStrings.search,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(AppSize.s15),
-            borderSide: BorderSide.none
-          ),
-          fillColor: Colors.white,
-          filled: true,
+              borderRadius: BorderRadius.circular(AppSize.s15),
+              borderSide: BorderSide.none),
+          // fillColor: Colors.white,
+          // filled: false,
         ),
-        onSubmitted: (_) {
-          final textEditingController =
-                 ref.read(textEditingControllerProvider);
+        onFieldSubmitted: (_) {
+          final textEditingController = ref.read(textEditingControllerProvider);
 
           FocusScope.of(context).unfocus();
 

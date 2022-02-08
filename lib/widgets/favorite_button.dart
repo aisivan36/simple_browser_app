@@ -12,27 +12,21 @@ class FavoriteButton extends ConsumerWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
         borderRadius: BorderRadius.circular(AppSize.s10),
       ),
       child: IconButton(
-        icon: Icon(isAddedWebPageToFavorite ?
-          Icons.favorite :
-          Icons.favorite_border,
-          color: Colors.red,),
+        icon: Icon(
+          isAddedWebPageToFavorite ? Icons.favorite : Icons.favorite_border,
+          color: Colors.red,
+        ),
         onPressed: () {
           final webPage = ref.read(webPageProvider);
 
-          isAddedWebPageToFavorite ?
-              ref
-                  .read(favoriteProvider.notifier)
-                  .remove(webPage)
-          :   ref
-                  .read(favoriteProvider.notifier)
-                  .add(webPage);
+          isAddedWebPageToFavorite
+              ? ref.read(favoriteProvider.notifier).remove(webPage)
+              : ref.read(favoriteProvider.notifier).add(webPage);
         },
       ),
     );
   }
-
 }

@@ -12,9 +12,7 @@ class WebViewNotifier extends StateNotifier<WebViewController?> {
   void openWebPage({required String url}) {
     if (url.isEmpty) return;
 
-    const String dot = ".";
-
-    if (url.isNotEmpty && !url.contains(dot)) {
+    if (url.isNotEmpty && !url.contains(AppStrings.dot)) {
       url = '${AppStrings.initialSearch}$url';
     } else {
       if (!url.startsWith(AppStrings.https) &&
