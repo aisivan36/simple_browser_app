@@ -4,8 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/providers.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-var progressValue = StateProvider<int>((ref) => value);
-
 class ValueProgress extends StateNotifier<double> {
   ValueProgress() : super(0);
 
@@ -17,8 +15,6 @@ class ValueProgress extends StateNotifier<double> {
 final stateValue = StateNotifierProvider<ValueProgress, double>(
   (ref) => ValueProgress(),
 );
-
-int value = 0;
 
 class MiniBrowser extends ConsumerWidget {
   const MiniBrowser({Key? key}) : super(key: key);
